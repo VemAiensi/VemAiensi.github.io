@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+    color: #777;
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.hdr {
+    text-align: center;
+}
+
+.container {
+    display:flex;
+    margin:0 auto;
+    max-width: 800px;
+}
+
+.modeBtn {
+    transform: rotate(-90deg);
+    height: 1em;
+    display: block;
+}
+
+.btn{
+    display: block;
+    width: 145px;
+    height: 40px;
+    margin: 1em;
+}
+
+.btn-clear {
+    margin-top: 0;
+}
+
+.btn-analyzers{
+    width: 90px;
+}
+
+.text-in {
+    display: block;
+    text-align:justify;
+    width: 710px;
+    height: 200px;
+    margin: 1em;
+}

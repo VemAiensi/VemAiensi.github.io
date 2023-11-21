@@ -2,23 +2,45 @@
 <html>
     <head>
         <title>Simple Compiler</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <header>
+        <header class="hdr">
             <h1>Welcome to Simple Compiler</h1>
         </header>
-        <section>
-            <a href="index.html" target="_blank"><button>Open File</button></a>
-            &lt;&gt;
-            <span>Result:</span>
-            <hr>
-            <span>Analyze</span><br>
-            <input type="text" value="Type your code here..."><br>
-            <button>Lexeme</button><br>
-            <button>Syntax</button><br>
-            <button>Semantics</button><br>
-            <button>Clear</button><br>
+        <section class="container">
+
+            <a href="index.html" target="_blank">
+            <button class="btn">Open File</button></a>
+         
+            
+            <div class="tex-out">
+                <span>Result:</span>
+            </div>
+            
+        </section>
+        <hr>
+        <section class="container">
+            <div>
+                <div class="container">
+                    <div>
+                        <span class="modeBtn">Analyze</span><br>
+                    </div>
+
+                    <div>
+                        <button class="btn  btn-analyzers">Lexeme</button>
+                        <button class="btn  btn-analyzers">Syntax</button>
+                        <button class="btn  btn-analyzers">Semantics</button>
+                    </div>
+                </div>
+                <div>
+                    <button  class="btn btn-clear">Clear</button>
+                </div>
+            </div>
+            
+            
+            <input type="text" placeholder="Type your code here..." class="text-in">
         </section>
         <br>
         <footer>
