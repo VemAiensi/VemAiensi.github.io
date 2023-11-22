@@ -1,15 +1,53 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+@font-face {
+    font-family: "JetBrains";
+    src: url('Fonts/woff2/JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     box-sizing: border-box;
+    font-family: Raleway;
     color: #777;
 }
 
-html, body{
+html, body, footer{
     margin: 0;
     padding: 0;
 }
 
-.hdr {
-    text-align: center;
+
+.container-header {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3em;
+}
+
+.container-header span {
+    font-size: 1.5em;
+    color: white;
+    margin: 1em;
+    margin-left: 1em;
+}
+
+.head-link{
+    display: flex;
+}
+
+.head-link span:hover {
+    background-color: #d9d9d9;
+    color:black;
+    border-color: #d9d9d9 ;
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 10%;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    margin-right: 14px;
+    cursor:pointer;
 }
 
 .container {
@@ -20,8 +58,8 @@ html, body{
 
 .modeBtn {
     transform: rotate(-90deg);
-    height: 1em;
     display: block;
+    background-color: #777;
 }
 
 .btn{
@@ -40,9 +78,28 @@ html, body{
 }
 
 .text-in {
-    display: block;
-    text-align:justify;
+    display:flex;
     width: 710px;
-    height: 200px;
     margin: 1em;
+
+}
+
+.container-footer {
+    background-color: black;
+    display: flex;
+    
+}
+
+
+
+.footer-item {
+    margin: 20px;
+}
+
+
+
+.footer-item :hover {
+    background-color: #d9d9d9;
+    color:black;
+    cursor:pointer;
 }
