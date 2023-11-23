@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat");
 
 @font-face {
     font-family: "JetBrains";
@@ -9,7 +9,7 @@
 
 * {
     box-sizing: border-box;
-    font-family: Raleway;
+    font-family: Montserrat;
     color: #777;
 }
 
@@ -19,9 +19,8 @@ html, body{
 }
 
 section {
-    margin-left: 70px;
-    margin-right: 70px;
-    
+    margin-left: 120px;
+    margin-right: 120px;
 }
 
 
@@ -43,14 +42,17 @@ section {
 }
 
 .container-header {
-    background-color: black;
+    background-color: rgba(0,0,0,0.8);
+    background-image: url('images/nav/Gears_simple_HD_animated_background_11.gif');
+    background-size:cover;
+    background-blend-mode: multiply;
     display: flex;
     justify-content: space-between;
     margin-bottom: 3em;
 }
 
 .container-header span {
-    font-size: 1.5em;
+    font-size: 2em;
     color: white;
     margin: 1em;
     margin-left: 1em;
@@ -65,18 +67,18 @@ section {
     justify-content:center;
     margin:0 auto;
     padding:5px 10px;
-    max-width: 800px;
+    max-width: 1200px;
 }
 
 .buttons {
     display:block;
-    width: 150px;
+    width: 300px;
 }
 
 .fn-buttons {
     display: flex;
     background-color: #d9d9d9;
-    justify-content: flex-end;
+    justify-content:flex-start;
     align-items: center;
     border-radius:18px 8px 8px 18px;
 }
@@ -89,7 +91,7 @@ section {
 
 .btn{
     display: block;
-    width: 150px;
+    width: 100%;
     height: 60px;
     cursor: pointer;
     font-size: 18px;
@@ -97,7 +99,8 @@ section {
 }
 
 .btn-analyzers{
-    width: 110px;
+    display: inline-block;
+    width: 100%;
 }
 
 .btn-0 {
@@ -114,7 +117,7 @@ section {
 
 .text-out{
     display: flex;
-    width:630px;
+    width:890px;
     margin-left: 10px;
     background-color: #d9d9d9;
     align-items: center;
@@ -126,7 +129,7 @@ section {
 }
 
 .edit-area {
-    width:630px;
+    width:890px;
     display:flex;
     margin-left: 10px;
     
