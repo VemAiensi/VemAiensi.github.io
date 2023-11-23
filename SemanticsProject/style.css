@@ -1,37 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat");
 
 @font-face {
     font-family: "JetBrains";
-    src: url('Fonts/woff2/JetBrainsMono-Regular.woff2') format('woff2');
+    src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 * {
     box-sizing: border-box;
-    font-family: Raleway;
+    font-family: Montserrat;
     color: #777;
 }
 
-html, body, footer{
+html, body{
     margin: 0;
     padding: 0;
 }
 
-
-.container-header {
-    background-color: black;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 3em;
+section {
+    margin-left: 120px;
+    margin-right: 120px;
 }
 
-.container-header span {
-    font-size: 1.5em;
-    color: white;
-    margin: 1em;
-    margin-left: 1em;
-}
 
 .head-link{
     display: flex;
@@ -43,63 +34,164 @@ html, body, footer{
     border-color: #d9d9d9 ;
     border-style: solid;
     border-width: 10px;
-    border-radius: 10%;
+    border-radius: 20px;
     margin-top: 14px;
     margin-bottom: 14px;
     margin-right: 14px;
     cursor:pointer;
 }
 
+.container-header {
+    background-color: rgba(0,0,0,0.8);
+    background-image: url('images/nav/Gears_simple_HD_animated_background_11.gif');
+    background-size:cover;
+    background-blend-mode: multiply;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3em;
+}
+
+.container-header span {
+    font-size: 2em;
+    color: white;
+    margin: 1em;
+    margin-left: 1em;
+}
+
+
+
+
+
 .container {
     display:flex;
+    justify-content:center;
     margin:0 auto;
-    max-width: 800px;
+    padding:5px 10px;
+    max-width: 1200px;
+}
+
+.buttons {
+    display:block;
+    width: 300px;
+}
+
+.fn-buttons {
+    display: flex;
+    background-color: #d9d9d9;
+    justify-content:flex-start;
+    align-items: center;
+    border-radius:18px 8px 8px 18px;
 }
 
 .modeBtn {
+    display:block;
+    height: 0;
     transform: rotate(-90deg);
-    display: block;
-    background-color: #777;
 }
 
 .btn{
     display: block;
-    width: 145px;
-    height: 40px;
-    margin: 1em;
-}
-
-.btn-clear {
-    margin-top: 0;
+    width: 100%;
+    height: 60px;
+    cursor: pointer;
+    font-size: 18px;
+    border-style: none;
 }
 
 .btn-analyzers{
-    width: 90px;
+    display: inline-block;
+    width: 100%;
+}
+
+.btn-0 {
+    border-radius:18px 8px 8px 18px;
+}
+
+.btn-1 {
+    border-radius:0px 8px 0px 0px;
+}
+
+.btn-3 {
+    border-radius:0px 0px 8px 0px;
+}
+
+.text-out{
+    display: flex;
+    width:890px;
+    margin-left: 10px;
+    background-color: #d9d9d9;
+    align-items: center;
+    border-radius:8px 18px 18px 8px;
+}
+
+.text-out span{
+    padding-left: 1em;
+}
+
+.edit-area {
+    width:890px;
+    display:flex;
+    margin-left: 10px;
+    
 }
 
 .text-in {
-    display:flex;
-    width: 710px;
-    margin: 1em;
-
+    width:100%;
+    height: stretch;
+    
 }
+
+.text-in textarea{
+    font-family: "JetBrains";
+    font-size: large;
+    color: black;
+    text-align: start;
+    padding: 1em;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border-radius:8px 18px 18px 8px;
+}
+
+.btn-clear {
+    width: 40px;
+    height: 40px;
+    margin-left: -50px;
+    margin-top: 130px;
+    align-self: flex-end;
+    border-radius: 10px;
+}
+
+
+
+
 
 .container-footer {
     background-color: black;
     display: flex;
-    
+    justify-content: space-between;
 }
 
-
-
-.footer-item {
-    margin: 20px;
-}
-
-
-
-.footer-item :hover {
+.container-footer :hover {
     background-color: #d9d9d9;
     color:black;
     cursor:pointer;
+    border-radius: 10px
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    padding: 1em;
+}
+
+.footer-item span {
+    padding-left: 0.3em;
+}
+
+button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: #666;
 }
