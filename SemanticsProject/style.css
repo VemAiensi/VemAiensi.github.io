@@ -58,6 +58,26 @@ section {
     margin-left: 1em;
 }
 
+.sct-1{
+    text-align: center;
+}
+
+.sct-1-head span {
+    font-size: 1.5em;
+    color:black;
+    word-spacing: 1em;
+    padding:0.3em;
+    margin-bottom: 0.5em;
+    border-bottom: #777;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+.sct-1 p{
+    margin-top:1em;
+    text-align: center;
+}
+
 
 
 
