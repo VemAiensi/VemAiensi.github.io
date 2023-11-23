@@ -18,54 +18,55 @@
         <section class="sct-1">
 
             <div class="sct-1-head">
-               <span>
-                SIMPLE JAVA COMPILER
-               </span> 
-            </div>
-            <p>A basic emulator for Java's syntax</p>
+                <span>
+                 SIMPLE JAVA COMPILER
+                </span> 
+             </div>
+             <p>A basic emulator for Java's syntax</p>
+            
+            <div class="container cnt-1">
 
-        <div class="container cnt-1">
+                <div class="buttons">
+                    <input type="file" id="fileInput" style="display:none" accept=".java, .txt" onchange="loadFile()">
+                    <button class="btn btn-0" id="openFileButton" onclick="document.getElementById('fileInput').click()">Open File</button>
+                </div>
 
-            <div class="buttons">
-                <button class="btn btn-0">Open File</button>
+                <div class="text-out">
+                    <span>Result:</span>
+                    <span id = "resultOutput">Waiting for input!</span>
+                </div>
             </div>
-
-            <div class="text-out">
-                <span>Result:</span>
-                <span>This is a sample Result</span>
-            </div>
-        </div>
-        
-        <div class="container cnt-2">
-            <div class="buttons">
-                <div class="fn-buttons">
-                    <div  class="modeBtn">
-                        <span>Analyze</span><br>
+            
+            <div class="container cnt-2">
+                <div class="buttons">
+                    <div class="fn-buttons">
+                        <div  class="modeBtn">
+                            <span>Analyze</span><br>
+                        </div>
+                        
+                        <div>
+                            <button class="btn  btn-analyzers btn-1" disabled id = "lexemeButton">Lexeme</button>
+                            <button class="btn  btn-analyzers btn-2" disabled id = "syntaxButton">Syntax</button>
+                            <button class="btn  btn-analyzers btn-3" disabled id = "semanticButton">Semantics</button>
+                        </div>
                     </div>
                     
-                    <div class="btn-analyzers">
-                        <button class="btn   btn-1">Lexeme</button>
-                        <button class="btn   btn-2">Syntax</button>
-                        <button class="btn   btn-3">Semantics</button>
+                </div>
+                
+                <div class="edit-area">
+                    <div class="text-in">
+                        <textarea type="text" placeholder="Type your code here..." id = "codeForAnalysis" oninput="handleTextareaInput(this)"></textarea>
+                        
+                    </div>
+
+                    <div class="clr-button">
+                        <button class="btn btn-clear" id="clearButton" onclick="clearTextArea()">Del</button>
                     </div>
                 </div>
                 
             </div>
             
-            <div class="edit-area">
-                <div class="text-in">
-                    <textarea type="text" placeholder="Type your code here..."></textarea>
-                    
-                </div>
-
-                <div class="clr-button">
-                    <button  class="btn btn-clear">Del</button>
-                </div>
-            </div>
-            
-        </div>
-        
-        <br>
+            <br>
         </section>
 
         <section>
@@ -75,6 +76,7 @@
             
             <p>
                 Blablablablablablablabablabalbalbablalbablablbalab aldnlandlawndlah bc agfiye
+                hi, vem!
             </p>
         </section>
 
@@ -111,5 +113,6 @@
         </footer>
         
     </body>
-    
+    <script src = "basicFunctions.js"></script>
+    <script></script>
 </html>
