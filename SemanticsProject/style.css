@@ -13,12 +13,16 @@
     color: #777;
 }
 
-html, body, footer{
+html, body{
     margin: 0;
     padding: 0;
 }
 
-
+section {
+    margin-left: 70px;
+    margin-right: 70px;
+    
+}
 
 
 .head-link{
@@ -52,20 +56,16 @@ html, body, footer{
     margin-left: 1em;
 }
 
+
+
+
+
 .container {
     display:flex;
-    justify-content: center;
-    align-items: stretch;
-    align-content: stretch;
+    justify-content:center;
     margin:0 auto;
-    padding:0 3em;
+    padding:5px 10px;
     max-width: 800px;
-}
-
-.modeBtn {
-    display:block;
-    height: 0;
-    transform: rotate(-90deg);
 }
 
 .buttons {
@@ -78,42 +78,90 @@ html, body, footer{
     background-color: #d9d9d9;
     justify-content: flex-end;
     align-items: center;
+    border-radius:18px 8px 8px 18px;
+}
+
+.modeBtn {
+    display:block;
+    height: 0;
+    transform: rotate(-90deg);
 }
 
 .btn{
     display: block;
-    width: 142px;
-    height: 40px;
-    margin:4px;
-}
-
-.btn-clear {
-    margin-top: 0;
+    width: 150px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 18px;
+    border-style: none;
 }
 
 .btn-analyzers{
-    width: 100px;
+    width: 110px;
+}
 
+.btn-0 {
+    border-radius:18px 8px 8px 18px;
+}
+
+.btn-1 {
+    border-radius:0px 8px 0px 0px;
+}
+
+.btn-3 {
+    border-radius:0px 0px 8px 0px;
 }
 
 .text-out{
-    align-content: center;
-    width:650px;
+    display: flex;
+    width:630px;
+    margin-left: 10px;
     background-color: #d9d9d9;
+    align-items: center;
+    border-radius:8px 18px 18px 8px;
+}
+
+.text-out span{
+    padding-left: 1em;
+}
+
+.edit-area {
+    width:630px;
+    display:flex;
+    margin-left: 10px;
+    
 }
 
 .text-in {
-    width:650px;
-    height: 180px;
+    width:100%;
+    height: stretch;
+    
 }
 
 .text-in textarea{
     font-family: "JetBrains";
+    font-size: large;
+    color: black;
     text-align: start;
+    padding: 1em;
     width: 100%;
     height: 100%;
     resize: none;
+    border-radius:8px 18px 18px 8px;
 }
+
+.btn-clear {
+    width: 40px;
+    height: 40px;
+    margin-left: -50px;
+    margin-top: 130px;
+    align-self: flex-end;
+    border-radius: 10px;
+}
+
+
+
+
 
 .container-footer {
     background-color: black;
@@ -127,8 +175,6 @@ html, body, footer{
     cursor:pointer;
     border-radius: 10px
 }
-
-
 
 .footer-item {
     display: flex;
