@@ -1,46 +1,43 @@
-// Place this in your script.js file or include it in your HTML file
+//Variable pool
+let openFileButton = document.getElementById('opnButton');
+let lexemeButton = document.getElementById('lxmButton');
+let syntaxButton = document.getElementById('stxButton');
+let smnticButton = document.getElementById('stcButton');
+let clearButton = document.getElementById('clrButton');
 
+let codeForAnalysis = document.getElementById('codeForAnalysis');
+let resultOutput = document.getElementById('resultOutput');
+
+
+
+//textHandlers
 function handleTextareaInput(textarea) {
-    var openFileButton = document.getElementById('openFileButton');
-    var lexemeButton = document.getElementById('lexemeButton');
-    var clearButton = document.getElementById('clearButton');
-    var resultOutput = document.getElementById('resultOutput');
-
     if (textarea.value.trim() === '') {
         openFileButton.disabled = false;
-        lexemeButton.disabled = true;
         clearButton.disabled = true;
+        lexemeButton.disabled = true;
         resultOutput.innerText = 'Waiting for input!';
     } else {
         openFileButton.disabled = true;
-        lexemeButton.disabled = false;
         clearButton.disabled = false;
+        lexemeButton.disabled = false;
         resultOutput.innerText = 'Ready for analysis!';
     }
 }
 
 function loadFile() {
     var fileInput = document.getElementById('fileInput');
-    var codeForAnalysis = document.getElementById('codeForAnalysis');
-    var resultOutput = document.getElementById('resultOutput');
-    var openFileButton = document.getElementById('openFileButton');
-    var lexemeButton = document.getElementById('lexemeButton');
-    var clearButton = document.getElementById('clearButton');
-
     var file = fileInput.files[0];
-
+    console.log(typeof file)
     if (file) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
             // Set the content of the textarea with the file content
             codeForAnalysis.value = e.target.result;
-
+            
             // Trigger the input event manually to update button states
             handleTextareaInput(codeForAnalysis);
-
-            // Additional step to ensure resultOutput is updated
-            resultOutput.innerText = 'Ready for analysis!';
         };
 
         reader.readAsText(file);
@@ -48,12 +45,6 @@ function loadFile() {
 }
 
 function clearTextArea() {
-    var codeForAnalysis = document.getElementById('codeForAnalysis');
-    var resultOutput = document.getElementById('resultOutput');
-    var openFileButton = document.getElementById('openFileButton');
-    var lexemeButton = document.getElementById('lexemeButton');
-    var clearButton = document.getElementById('clearButton');
-
     // Clear the text area
     codeForAnalysis.value = '';
 
@@ -66,4 +57,38 @@ function clearTextArea() {
     // Disable all other buttons
     lexemeButton.disabled = true;
     clearButton.disabled = true;
+}
+
+//input processors
+function analyzeLexeme(){
+    //translate the java code here
+
+    resultOutput.innerText = 'Analyzed Tokens: Passed!';
+
+    if(resultOutput.innerText === 'Analyzed Tokens: Passed!'){
+        lexemeButton.disabled = true;
+        syntaxButton.disabled = false;
+    }
+}
+
+function analyzeSyntax(){
+    //translate the java code here
+
+    resultOutput.innerText = 'Syntax is Correct: Passed!';
+
+    if(resultOutput.innerText === 'Syntax is Correct: Passed!'){
+        syntaxButton.disabled = true;
+        smnticButton.disabled = false;
+    }
+}
+
+function analyzeSmntix(){
+    //translate the java code here
+
+    resultOutput.innerText = 'Semantically Correct: Passed!';
+
+    if(resultOutput.innerText === 'Semantically Correct: Passed!'){
+        smnticButton.disabled = true;
+        openFileButton.disabled = false;
+    }
 }

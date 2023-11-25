@@ -3,6 +3,7 @@
     <head>
         <title>Simple Compiler</title>
         <link rel="stylesheet" href="style.css">
+        <script src = "basicFunctions.js" async></script>
     </head>
     
     <body>
@@ -28,7 +29,7 @@
 
                 <div class="buttons">
                     <input type="file" id="fileInput" style="display:none" accept=".java, .txt" onchange="loadFile()">
-                    <button class="btn btn-0" id="openFileButton" onclick="document.getElementById('fileInput').click()">Open File</button>
+                    <button class="btn btn-0" id="opnButton" onclick="document.getElementById('fileInput').click()">Open File</button>
                 </div>
 
                 <div class="text-out">
@@ -45,22 +46,20 @@
                         </div>
                         
                         <div>
-                            <button class="btn  btn-analyzers btn-1" disabled id = "lexemeButton">Lexeme</button>
-                            <button class="btn  btn-analyzers btn-2" disabled id = "syntaxButton">Syntax</button>
-                            <button class="btn  btn-analyzers btn-3" disabled id = "semanticButton">Semantics</button>
+                            <button class="btn  btn-analyzers btn-1" id="lxmButton" disabled onclick="analyzeLexeme()">Lexeme</button>
+                            <button class="btn  btn-analyzers btn-2" id="stxButton" disabled onclick="analyzeSyntax()">Syntax</button>
+                            <button class="btn  btn-analyzers btn-3" id="stcButton" disabled onclick="analyzeSmntix()">Semantics</button>
                         </div>
                     </div>
-                    
                 </div>
                 
                 <div class="edit-area">
                     <div class="text-in">
                         <textarea type="text" placeholder="Type your code here..." id = "codeForAnalysis" oninput="handleTextareaInput(this)"></textarea>
-                        
                     </div>
 
                     <div class="clr-button">
-                        <button class="btn btn-clear" id="clearButton" onclick="clearTextArea()">Del</button>
+                        <button class="btn btn-clear" id="clrButton" disabled onclick="clearTextArea()">Del</button>
                     </div>
                 </div>
                 
@@ -113,6 +112,4 @@
         </footer>
         
     </body>
-    <script src = "basicFunctions.js"></script>
-    <script></script>
 </html>
