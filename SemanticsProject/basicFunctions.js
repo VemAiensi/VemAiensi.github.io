@@ -7,6 +7,9 @@ let clearButton = document.getElementById('clrButton');
 
 let codeForAnalysis = document.getElementById('codeForAnalysis');
 let resultOutput = document.getElementById('resultOutput');
+let tokens = [];
+let fileContents = [];
+let contents = "";
 
 
 
@@ -60,15 +63,78 @@ function clearTextArea() {
 }
 
 //input processors
-function analyzeLexeme(){
-    //translate the java code here
+function analyzeLexeme() 
+{
+    fileContents = codeForAnalysis.value.split("\n");
+    codeForAnalysis.readOnly = true;
+    const dataTypes = ["int", "double", "char", "String", "boolean"];
+    const symbols = ["="];
+    const delimiter = [";"];
+    const bools = ["true", "false"];
 
-    resultOutput.innerText = 'Analyzed Tokens: Passed!';
+    const identifierPattern = /[a-zA-Z_][a-zA-Z0-9_]*/g;
+    const valuePattern = /"(?:[^"\\]|\\.)*"|'[^']*'|\b(?:true|false|\d+(?:\.\d+)?)\b/g;
+    const stringLiteralPattern = /"[^"]*"/g;
 
-    if(resultOutput.innerText === 'Analyzed Tokens: Passed!'){
+    let output = [];
+
+    let pattern = new RegExp(`(${identifierPattern.source}|${valuePattern.source}|${stringLiteralPattern.source}|.)`, "g");
+
+    for (let statement of fileContents) 
+    {
+        const matcher = Array.from(statement.matchAll(pattern));
+        let statementOutput = "";
+        for (let match of matcher) 
+        {
+            let lexeme = match[0];
+            if (isInArray(lexeme, dataTypes)) 
+            {
+                statementOutput += "<data_type> ";
+            } 
+            else if (isInArray(lexeme, symbols)) 
+            {
+                statementOutput += "<assignment_operator> ";
+            } 
+            else if (isInArray(lexeme, bools)) 
+            {
+                statementOutput += "<value> ";
+            } 
+            else if (lexeme.match(identifierPattern)) 
+            {
+                statementOutput += "<identifier> ";
+            } 
+            else if (lexeme.match(stringLiteralPattern))
+            {
+                statementOutput += "<value> ";
+            } 
+            else if (lexeme.match(valuePattern)) 
+            {
+                statementOutput += "<value> ";
+            } 
+            else if (isInArray(lexeme, delimiter)) 
+            {
+                statementOutput += "<delimiter> ";
+            }
+        }
+        tokens.push(statementOutput.trim());
+    }
+    contents = convertListToString(tokens);
+    resultOutput.innerText = contents;
+
+    if(resultOutput.innerText != ''){
         lexemeButton.disabled = true;
         syntaxButton.disabled = false;
     }
+}
+
+function isInArray(target, array) 
+{
+    return array.includes(target);
+}
+
+function convertListToString(list)
+{
+    return list.join("\n");
 }
 
 function analyzeSyntax(){
