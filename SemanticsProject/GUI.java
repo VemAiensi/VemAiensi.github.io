@@ -322,9 +322,10 @@ public class GUI
     
     public List<String> lexemeAnalysis(List<String> inputStatement)
     {
-        String[] dataTypes = {"int", "double", "char", "String"};
+        String[] dataTypes = {"int", "double", "char", "String", "boolean"};
         String[] symbols = {"="};
         String[] delimiter = {";"};
+        String[] bools = {"true", "false"};
 
         String identifierPattern = "[a-zA-Z_][a-zA-Z0-9_]*";
         String valuePattern = "\"(?:[^\"\\\\]|\\\\.)*\"|'[^']*'|\\d+(\\.\\d+)?";
@@ -348,6 +349,10 @@ public class GUI
 	            else if (isInArray(lexeme, symbols)) 
 	            {
 	                statementOutput.append("<assignment_operator> ");
+	            }
+	            else if (isInArray(lexeme, bools))
+	            {
+	            	statementOutput.append("<value> ");
 	            }
 	            else if (lexeme.matches(identifierPattern)) 
 	            {
@@ -477,6 +482,17 @@ public class GUI
         else if (dataType.equals("String")) 
         {
             if (value.startsWith("\"") && value.endsWith("\"")) 
+            {
+                status = "Semantically correct!";
+            } 
+            else 
+            {
+                status = "Semantically incorrect!";
+            }
+        } 
+        else if (dataType.equals("boolean")) 
+        {
+            if (value.equals("true") || value.equals("false")) 
             {
                 status = "Semantically correct!";
             } 
