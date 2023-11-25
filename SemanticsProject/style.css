@@ -55,9 +55,10 @@ html, body{
 
 .underline {
     display: flex;
-    width: 800px;
-    height: 3px;
+    width: 80%;
+    height: 6px;
     background-color: #0C5776;
+    border-radius: 6px;
 }
 
 .sct-1-text2{
@@ -129,16 +130,19 @@ html, body{
 .fn-buttons {
     display: flex;
     background-color: #d9d9d9;
-    justify-content:flex-start;
-    align-items: center;
     border-radius:18px 8px 8px 18px;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .modeBtn {
-    display:block;
-    height: 0;
-    transform: rotate(-90deg);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 5px;
+    letter-spacing: 5px;
+    font-size: 1em;
 }
+
 
 .btn{
     display: block;
@@ -147,11 +151,20 @@ html, body{
     width: 100%;
     height: 60px;
     cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
     font-family: 'M PLUS Rounded 1c';
-    font-weight:bolder;
-    font-size: 20px;
+    font-weight: bolder;
+    font-size: 100%;
     letter-spacing: 3px;
     border-style: none;
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    color:#7a878a;
+    cursor: not-allowed;
+    background-color: #465b5f;
 }
 
 .btn-analyzers{
@@ -182,6 +195,7 @@ html, body{
 
 .text-out span{
     padding-left: 1em;
+    color: white;
 }
 
 .edit-area {
@@ -208,17 +222,23 @@ html, body{
     resize: none;
     border-radius:8px 18px 18px 8px;
 }
-
+.clr-button{
+    
+}
 .btn-clear {
+    fill: #ffffff;
+    background-color: #df5858;
     width: 40px;
     height: 40px;
     margin-left: -50px;
     margin-top: 130px;
-    align-self: flex-end;
     border-radius: 10px;
 }
 
-
+.btn-clear:disabled{
+    background-color: #ca9898;
+    fill: #ffecec;
+}
 
 
 
@@ -246,8 +266,4 @@ html, body{
     padding-left: 0.3em;
 }
 
-button[disabled] {
-    background-color: #ccc;
-    cursor: not-allowed;
-    color: #666;
-}
+
