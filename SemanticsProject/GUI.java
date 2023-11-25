@@ -505,6 +505,17 @@ public class GUI
                 status = "Semantically incorrect!";
             }
         } 
+        else if (dataType.equals("char")) 
+        {
+            if ((value.startsWith("\'")  && value.endsWith("\'")) && value.length() == 3)
+            {
+                status = "Semantically correct!";
+            } 
+            else 
+            {
+                status = "Semantically incorrect!";
+            }
+        } 
         else 
         {
             status = "Invalid input!";
