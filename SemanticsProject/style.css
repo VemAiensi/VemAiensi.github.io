@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c");
 
 @font-face {
     font-family: "JetBrains";
@@ -18,9 +19,57 @@ html, body{
     padding: 0;
 }
 
-section {
+.page-content {
+    display:flex;
+    flex-direction: column;
+    height: 100dvh;
+    background-color: #ffffff;
+}
+
+.section {
     margin-left: 120px;
     margin-right: 120px;
+}
+
+.sct-1{
+    text-align: center;
+}
+
+.sct-1-head{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.sct-1-head span{
+    padding:5px;
+}
+
+.sct-1-text1{
+    display:block;
+    word-spacing: 0.5em;
+    color:black;
+    font-size: 50px;
+}
+
+.underline {
+    display: flex;
+    width: 800px;
+    height: 3px;
+    background-color: #0C5776;
+}
+
+.sct-1-text2{
+    display:block;
+    font-size: 25px;
+    font-family: 'JetBrains';
+}
+
+.sct-2 {
+    flex-grow: 1;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 
@@ -58,25 +107,7 @@ section {
     margin-left: 1em;
 }
 
-.sct-1{
-    text-align: center;
-}
 
-.sct-1-head span {
-    font-size: 1.5em;
-    color:black;
-    word-spacing: 1em;
-    padding:0.3em;
-    margin-bottom: 0.5em;
-    border-bottom: #777;
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-}
-
-.sct-1 p{
-    margin-top:1em;
-    text-align: center;
-}
 
 
 
@@ -111,10 +142,15 @@ section {
 
 .btn{
     display: block;
+    background-color: #2d99ae;
+    color:#ffffff;
     width: 100%;
     height: 60px;
     cursor: pointer;
-    font-size: 18px;
+    font-family: 'M PLUS Rounded 1c';
+    font-weight:bolder;
+    font-size: 20px;
+    letter-spacing: 3px;
     border-style: none;
 }
 
@@ -139,7 +175,7 @@ section {
     display: flex;
     width:890px;
     margin-left: 10px;
-    background-color: #d9d9d9;
+    background-color: #0C5776;
     align-items: center;
     border-radius:8px 18px 18px 8px;
 }

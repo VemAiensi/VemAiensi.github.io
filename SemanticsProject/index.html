@@ -7,6 +7,7 @@
     </head>
     
     <body>
+        <div class="page-content">
         <header class="container-header">
             <span>Turtle Duck</span>
     
@@ -16,20 +17,21 @@
             
         </header>
 
-        <section class="sct-1">
+
+        <div class="section sct-1">
 
             <div class="sct-1-head">
-                <span>
-                 SIMPLE JAVA COMPILER
-                </span> 
-             </div>
-             <p>A basic emulator for Java's syntax</p>
+                <span class="sct-1-text1">SIMPLE JAVA COMPILER</span>
+                <div class="underline"></div>
+                <span class="sct-1-text2">A BASIC EMULATOR FOR JAVA'S SYNTAX</span>
+            </div>
+             
             
             <div class="container cnt-1">
 
                 <div class="buttons">
                     <input type="file" id="fileInput" style="display:none" accept=".java, .txt" onchange="loadFile()">
-                    <button class="btn btn-0" id="opnButton" onclick="document.getElementById('fileInput').click()">Open File</button>
+                    <button class="btn btn-0" id="opnButton" onclick="document.getElementById('fileInput').click()">OPEN FILE</button>
                 </div>
 
                 <div class="text-out">
@@ -66,9 +68,9 @@
             </div>
             
             <br>
-        </section>
+        </div>
 
-        <section>
+        <div class="section sct-2">
             <h3>
                 Help
             </h3>
@@ -77,9 +79,8 @@
                 Blablablablablablablabablabalbalbablalbablablbalab aldnlandlawndlah bc agfiye
                 hi, vem!
             </p>
-        </section>
-
-
+        </div>
+        
         <footer>
             <div class="container-footer">
                 <div class="footer-item">
@@ -101,15 +102,13 @@
                         stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <span>About the Devs</span>
                 </div>
-                
-                
-    
             </div>
             <div class="container-footer">
                 All rights reserved
             </div>
             
         </footer>
-        
+    </div>
+
     </body>
 </html>
