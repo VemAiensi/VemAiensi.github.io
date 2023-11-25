@@ -240,6 +240,10 @@ public class GUI
 				 btnNewButton3.setEnabled(false);
 				 btnNewButton4.setEnabled(false);
 				 btnNewButton5.setEnabled(false);
+				 contents = "none";
+				 tokens = new ArrayList<String>(); ;
+				 fileContents = new ArrayList<String>(); 
+				 
 			}
 		});
 		
