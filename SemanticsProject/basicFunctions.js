@@ -14,15 +14,19 @@ let contents = "";
 
 
 //textHandlers
-function handleTextareaInput(textarea) {
-    if (textarea.value.trim() === '') {
+function handleTextareaInput(textarea) 
+{
+    if (textarea.value.trim() === '') 
+    {
         openFileButton.disabled = false;
         clearButton.disabled = true;
         lexemeButton.disabled = true;
         syntaxButton.disabled = true;
         smnticButton.disabled = true;
         resultOutput.innerText = 'Waiting for input!';
-    } else {
+    } 
+    else 
+    {
         openFileButton.disabled = true;
         clearButton.disabled = false;
         lexemeButton.disabled = false;
@@ -32,14 +36,17 @@ function handleTextareaInput(textarea) {
     }
 }
 
-function loadFile() {
+function loadFile() 
+{
     var fileInput = document.getElementById('fileInput');
     var file = fileInput.files[0];
     console.log(typeof file)
-    if (file) {
+    if (file) 
+    {
         var reader = new FileReader();
 
-        reader.onload = function (e) {
+        reader.onload = function (e) 
+        {
             // Set the content of the textarea with the file content
             codeForAnalysis.value = e.target.result;
             
@@ -51,7 +58,8 @@ function loadFile() {
     }
 }
 
-function clearTextArea() {
+function clearTextArea() 
+{
     // Clear the text area
     codeForAnalysis.value = '';
 
@@ -67,9 +75,12 @@ function clearTextArea() {
     smnticButton.disabled = true;
     clearButton.disabled = true;
 
-    let tokens = [];
-    let fileContents = [];
-    let contents = "";
+    //Enable typing
+    codeForAnalysis.readOnly = false;
+
+    tokens = [];
+    fileContents = [];
+    contents = "";
 }
 
 //input processors
@@ -185,13 +196,128 @@ function analyzeSyntax()
     }
 }
 
-function analyzeSmntix(){
-    //translate the java code here
+function analyzeSmntix()
+{
+    let allCorrect = true;
 
-    resultOutput.innerText = 'Semantically Correct: Passed!';
-
-    if(resultOutput.innerText === 'Semantically Correct: Passed!'){
-        smnticButton.disabled = true;
-        openFileButton.disabled = false;
+    for (let line of fileContents)
+    {
+        if (smntixSingleLine(line) === false)
+        {
+            resultOutput.innerText = 'Semantically Incorrect: Try Again!';
+            break;
+        }
+        resultOutput.innerText = 'Semantically Correct: Passed!';
     }
+
+    if(resultOutput.innerText === 'Semantically Correct: Passed!')
+    {
+        openFileButton.disabled = true;
+        lexemeButton.disabled = true;
+        syntaxButton.disabled = true;
+        smnticButton.disabled = true;
+        clearButton.disabled = false;
+    }
+}
+
+function smntixSingleLine(line)
+{
+    let status;
+    line = line.trim();
+
+    if (!line.endsWith(';'))
+    {
+        status = false;
+        return status;
+    }
+    line = line.substring(0, line.length - 1);
+    let lineParts = line.split("=");
+
+    if (lineParts.length != 2)
+    {
+        status = false;
+        return status;
+    }
+
+    let declaration = lineParts[0].trim();
+    let value = lineParts[1].trim();
+
+    let declarationParts = declaration.split(" ");
+
+    if (declarationParts.length != 2)
+    {
+        status = false;
+        return status;
+    }
+
+    let dataType = declarationParts[0];
+
+    if (dataType === "int")
+    {
+        try 
+        {
+            parseInt(value);
+            status = true;
+        } 
+        catch (e) 
+        {
+            if (e instanceof TypeError || e instanceof RangeError) 
+            {
+                status = false;
+            }
+        }
+    }
+    else if (dataType === "double")
+    {
+        try
+        {
+            parseFloat(value);
+            status = true;
+        }
+        catch (e)
+        {
+            if (e instanceof TypeError || e instanceof RangeError) 
+            {
+                status = false;
+            }
+        }
+    }
+    else if (dataType === "String") 
+    {
+        if (value.startsWith("\"") && value.endsWith("\"")) 
+        {
+            status = true;
+        } 
+        else 
+        {
+            status = false;
+        }
+    }
+    else if (dataType === "boolean")
+    {
+        if (value === "true" || value === "false")
+        {
+            status = true;
+        } 
+        else 
+        {
+            status = false;
+        }
+    }
+    else if (dataType === "char")
+    {
+        if (value.startsWith("\'") && value.endsWith("\'") && value.length == 3) 
+        {
+            status = true;
+        } 
+        else 
+        {
+            status = false;
+        }
+    }
+    else
+    {
+        status = false;
+    }
+    return status;
 }
