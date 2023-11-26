@@ -137,12 +137,24 @@ function convertListToString(list)
     return list.join("\n");
 }
 
-function analyzeSyntax(){
-    //translate the java code here
+function analyzeSyntax()
+{
+    const expected = "<data_type> <identifier> <assignment_operator> <value> <delimiter>";
 
-    resultOutput.innerText = 'Syntax is Correct: Passed!';
+    for (let line of tokens)
+    {
+        if (line.trim() != expected)
+        {
+            resultOutput.innerText = 'Syntax is Incorrect: Try Again!';
+        }
+        else
+        {
+            resultOutput.innerText = 'Syntax is Correct: Passed!';
+        }
+    }
 
-    if(resultOutput.innerText === 'Syntax is Correct: Passed!'){
+    if(resultOutput.innerText === 'Syntax is Correct: Passed!')
+    {
         syntaxButton.disabled = true;
         smnticButton.disabled = false;
     }
