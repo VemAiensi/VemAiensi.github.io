@@ -19,11 +19,15 @@ function handleTextareaInput(textarea) {
         openFileButton.disabled = false;
         clearButton.disabled = true;
         lexemeButton.disabled = true;
+        syntaxButton.disabled = true;
+        smnticButton.disabled = true;
         resultOutput.innerText = 'Waiting for input!';
     } else {
         openFileButton.disabled = true;
         clearButton.disabled = false;
         lexemeButton.disabled = false;
+        syntaxButton.disabled = true;
+        smnticButton.disabled = true;
         resultOutput.innerText = 'Ready for analysis!';
     }
 }
@@ -59,7 +63,13 @@ function clearTextArea() {
 
     // Disable all other buttons
     lexemeButton.disabled = true;
+    syntaxButton.disabled = true;
+    smnticButton.disabled = true;
     clearButton.disabled = true;
+
+    let tokens = [];
+    let fileContents = [];
+    let contents = "";
 }
 
 //input processors
@@ -121,9 +131,13 @@ function analyzeLexeme()
     contents = convertListToString(tokens);
     resultOutput.innerText = contents;
 
-    if(resultOutput.innerText != ''){
+    if(resultOutput.innerText != '')
+    {
+        openFileButton.disabled = true;
         lexemeButton.disabled = true;
         syntaxButton.disabled = false;
+        smnticButton.disabled = true;
+        clearButton.disabled = false;
     }
 }
 
@@ -155,8 +169,19 @@ function analyzeSyntax()
 
     if(resultOutput.innerText === 'Syntax is Correct: Passed!')
     {
+        openFileButton.disabled = true;
+        lexemeButton.disabled = true;
         syntaxButton.disabled = true;
         smnticButton.disabled = false;
+        clearButton.disabled = false;
+    }
+    else if(resultOutput.innerText === 'Syntax is Incorrect: Try Again!')
+    {
+        openFileButton.disabled = true;
+        lexemeButton.disabled = true;
+        syntaxButton.disabled = true;
+        smnticButton.disabled = true;
+        clearButton.disabled = false;
     }
 }
 
