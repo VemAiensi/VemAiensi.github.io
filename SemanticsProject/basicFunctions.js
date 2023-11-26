@@ -69,6 +69,9 @@ function clearTextArea()
     // Enable the "Open File" button
     openFileButton.disabled = false;
 
+    //Clear the file
+    document.getElementById('fileInput').value = '';
+
     // Disable all other buttons
     lexemeButton.disabled = true;
     syntaxButton.disabled = true;
