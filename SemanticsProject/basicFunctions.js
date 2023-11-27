@@ -63,14 +63,14 @@ function clearTextArea()
     // Clear the text area
     codeForAnalysis.value = '';
 
+    //clear the file
+    fileInput.value = '';
+
     // Update the result text
     resultOutput.innerText = 'Waiting for input!';
 
     // Enable the "Open File" button
     openFileButton.disabled = false;
-
-    //Clear the file
-    document.getElementById('fileInput').value = '';
 
     // Disable all other buttons
     lexemeButton.disabled = true;
@@ -81,6 +81,7 @@ function clearTextArea()
     //Enable typing
     codeForAnalysis.readOnly = false;
 
+    //resets variables
     tokens = [];
     fileContents = [];
     contents = "";
@@ -89,8 +90,13 @@ function clearTextArea()
 //input processors
 function analyzeLexeme() 
 {
+    //split code into an array by line
     fileContents = codeForAnalysis.value.split("\n");
+
+    //diable typing and editing
     codeForAnalysis.readOnly = true;
+
+    //things to check for
     const dataTypes = ["int", "double", "char", "String", "boolean"];
     const symbols = ["="];
     const delimiter = [";"];
@@ -100,10 +106,13 @@ function analyzeLexeme()
     const valuePattern = /"(?:[^"\\]|\\.)*"|'[^']*'|\b(?:true|false|\d+(?:\.\d+)?)\b/g;
     const stringLiteralPattern = /"[^"]*"/g;
 
+    //token collector
     let output = [];
 
+    //pattern checker
     let pattern = new RegExp(`(${identifierPattern.source}|${valuePattern.source}|${stringLiteralPattern.source}|.)`, "g");
 
+    //check each array for their tokens
     for (let statement of fileContents) 
     {
         const matcher = Array.from(statement.matchAll(pattern));
@@ -123,10 +132,6 @@ function analyzeLexeme()
             {
                 statementOutput += "<value> ";
             } 
-            else if (lexeme.match(identifierPattern)) 
-            {
-                statementOutput += "<identifier> ";
-            } 
             else if (lexeme.match(stringLiteralPattern))
             {
                 statementOutput += "<value> ";
@@ -135,17 +140,26 @@ function analyzeLexeme()
             {
                 statementOutput += "<value> ";
             } 
+            else if (lexeme.match(identifierPattern)) 
+            {
+                statementOutput += "<identifier> ";
+            } 
             else if (isInArray(lexeme, delimiter)) 
             {
                 statementOutput += "<delimiter> ";
             }
         }
+        //add the outputs into the tokens array
         tokens.push(statementOutput.trim());
     }
+    //turn tokens array into a string to output
     contents = convertListToString(tokens);
+
+    //output to result area
     resultOutput.innerText = contents;
 
-    if(resultOutput.innerText != '')
+    //disable and enable buttons/text fields
+    if(resultOutput.innerText !== '')
     {
         openFileButton.disabled = true;
         lexemeButton.disabled = true;
@@ -155,11 +169,13 @@ function analyzeLexeme()
     }
 }
 
+//checks if text matches the arrays
 function isInArray(target, array) 
 {
     return array.includes(target);
 }
 
+//turns list to string
 function convertListToString(list)
 {
     return list.join("\n");
@@ -167,11 +183,13 @@ function convertListToString(list)
 
 function analyzeSyntax()
 {
+    //expected token sequence
     const expected = "<data_type> <identifier> <assignment_operator> <value> <delimiter>";
 
+    //takes the sequence in the tokens and sees if all the syntax are correct
     for (let line of tokens)
     {
-        if (line.trim() != expected)
+        if (line.trim() !== expected)
         {
             resultOutput.innerText = 'Syntax is Incorrect: Try Again!';
         }
@@ -181,6 +199,7 @@ function analyzeSyntax()
         }
     }
 
+    //disable and enable buttons/text fields
     if(resultOutput.innerText === 'Syntax is Correct: Passed!')
     {
         openFileButton.disabled = true;
@@ -201,8 +220,7 @@ function analyzeSyntax()
 
 function analyzeSmntix()
 {
-    let allCorrect = true;
-
+    //see if all lins are correct
     for (let line of fileContents)
     {
         if (smntixSingleLine(line) === false)
@@ -213,6 +231,7 @@ function analyzeSmntix()
         resultOutput.innerText = 'Semantically Correct: Passed!';
     }
 
+    //disable and enable buttons/text fields
     if(resultOutput.innerText === 'Semantically Correct: Passed!')
     {
         openFileButton.disabled = true;
@@ -223,104 +242,110 @@ function analyzeSmntix()
     }
 }
 
+//single line analysis
 function smntixSingleLine(line)
 {
-    let status;
+    //initialize checker
     line = line.trim();
 
+    //checks if the line end with ;
     if (!line.endsWith(';'))
     {
-        status = false;
-        return status;
+        return false;
     }
+
+    //removes ;
     line = line.substring(0, line.length - 1);
+
+    //split the line into two parts
     let lineParts = line.split("=");
 
-    if (lineParts.length != 2)
+    //checks if both sides of initialization exists
+    if (lineParts.length !== 2)
     {
-        status = false;
-        return status;
+        return false;
     }
 
     let declaration = lineParts[0].trim();
     let value = lineParts[1].trim();
 
+    //split declaration 
     let declarationParts = declaration.split(" ");
 
-    if (declarationParts.length != 2)
+    //checks if both parts of declaration exists
+
+    if (declarationParts.length !== 2)
     {
-        status = false;
-        return status;
+        return false;
     }
 
     let dataType = declarationParts[0];
 
-    if (dataType === "int")
+    
+    //checks for int by checking if it's an integer, not a string or a double
+    if (dataType === "int") 
     {
         try 
         {
-            parseInt(value);
-            status = true;
+            let parsedValue = parseInt(value, 10);
+            return !isNaN(parsedValue) && parsedValue.toString() === value.trim();
         } 
         catch (e) 
         {
-            if (e instanceof TypeError || e instanceof RangeError) 
-            {
-                status = false;
-            }
+            return false;
         }
     }
+    //checks if the number if it's a valid number and not a string
     else if (dataType === "double")
     {
         try
         {
-            parseFloat(value);
-            status = true;
+            let parsedValue = parseFloat(value);
+            return !isNaN(parsedValue);
         }
         catch (e)
         {
-            if (e instanceof TypeError || e instanceof RangeError) 
-            {
-                status = false;
-            }
+            return false;
         }
     }
+    //checks if double quotes exist
     else if (dataType === "String") 
     {
         if (value.startsWith("\"") && value.endsWith("\"")) 
         {
-            status = true;
+            return true;
         } 
         else 
         {
-            status = false;
+            return false;
         }
     }
+    //checks if it's either true or false
     else if (dataType === "boolean")
     {
         if (value === "true" || value === "false")
         {
-            status = true;
+            return true;
         } 
         else 
         {
-            status = false;
+            return false;
         }
     }
+    //checks if it ends with single quotes and only has one character inside
     else if (dataType === "char")
     {
-        if (value.startsWith("\'") && value.endsWith("\'") && value.length == 3) 
+        if (value.startsWith("\'") && value.endsWith("\'") && value.length === 3) 
         {
-            status = true;
+            return true;
         } 
         else 
         {
-            status = false;
+            return false;
         }
     }
     else
     {
-        status = false;
+        return false;
     }
-    return status;
 }
