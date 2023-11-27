@@ -14,28 +14,39 @@ let contents = "";
 
 
 //textHandlers
-function handleTextareaInput(textarea) {
-    if (textarea.value.trim() === '') {
+function handleTextareaInput(textarea) 
+{
+    if (textarea.value.trim() === '') 
+    {
         openFileButton.disabled = false;
         clearButton.disabled = true;
         lexemeButton.disabled = true;
+        syntaxButton.disabled = true;
+        smnticButton.disabled = true;
         resultOutput.innerText = 'Waiting for input!';
-    } else {
+    } 
+    else 
+    {
         openFileButton.disabled = true;
         clearButton.disabled = false;
         lexemeButton.disabled = false;
+        syntaxButton.disabled = true;
+        smnticButton.disabled = true;
         resultOutput.innerText = 'Ready for analysis!';
     }
 }
 
-function loadFile() {
+function loadFile() 
+{
     var fileInput = document.getElementById('fileInput');
     var file = fileInput.files[0];
     console.log(typeof file)
-    if (file) {
+    if (file) 
+    {
         var reader = new FileReader();
 
-        reader.onload = function (e) {
+        reader.onload = function (e) 
+        {
             // Set the content of the textarea with the file content
             codeForAnalysis.value = e.target.result;
             
@@ -47,7 +58,8 @@ function loadFile() {
     }
 }
 
-function clearTextArea() {
+function clearTextArea() 
+{
     // Clear the text area
     codeForAnalysis.value = '';
 
@@ -57,9 +69,21 @@ function clearTextArea() {
     // Enable the "Open File" button
     openFileButton.disabled = false;
 
+    //Clear the file
+    document.getElementById('fileInput').value = '';
+
     // Disable all other buttons
     lexemeButton.disabled = true;
+    syntaxButton.disabled = true;
+    smnticButton.disabled = true;
     clearButton.disabled = true;
+
+    //Enable typing
+    codeForAnalysis.readOnly = false;
+
+    tokens = [];
+    fileContents = [];
+    contents = "";
 }
 
 //input processors
@@ -121,9 +145,13 @@ function analyzeLexeme()
     contents = convertListToString(tokens);
     resultOutput.innerText = contents;
 
-    if(resultOutput.innerText != ''){
+    if(resultOutput.innerText != '')
+    {
+        openFileButton.disabled = true;
         lexemeButton.disabled = true;
         syntaxButton.disabled = false;
+        smnticButton.disabled = true;
+        clearButton.disabled = false;
     }
 }
 
@@ -137,24 +165,162 @@ function convertListToString(list)
     return list.join("\n");
 }
 
-function analyzeSyntax(){
-    //translate the java code here
+function analyzeSyntax()
+{
+    const expected = "<data_type> <identifier> <assignment_operator> <value> <delimiter>";
 
-    resultOutput.innerText = 'Syntax is Correct: Passed!';
+    for (let line of tokens)
+    {
+        if (line.trim() != expected)
+        {
+            resultOutput.innerText = 'Syntax is Incorrect: Try Again!';
+        }
+        else
+        {
+            resultOutput.innerText = 'Syntax is Correct: Passed!';
+        }
+    }
 
-    if(resultOutput.innerText === 'Syntax is Correct: Passed!'){
+    if(resultOutput.innerText === 'Syntax is Correct: Passed!')
+    {
+        openFileButton.disabled = true;
+        lexemeButton.disabled = true;
         syntaxButton.disabled = true;
         smnticButton.disabled = false;
+        clearButton.disabled = false;
+    }
+    else if(resultOutput.innerText === 'Syntax is Incorrect: Try Again!')
+    {
+        openFileButton.disabled = true;
+        lexemeButton.disabled = true;
+        syntaxButton.disabled = true;
+        smnticButton.disabled = true;
+        clearButton.disabled = false;
     }
 }
 
-function analyzeSmntix(){
-    //translate the java code here
+function analyzeSmntix()
+{
+    let allCorrect = true;
 
-    resultOutput.innerText = 'Semantically Correct: Passed!';
-
-    if(resultOutput.innerText === 'Semantically Correct: Passed!'){
-        smnticButton.disabled = true;
-        openFileButton.disabled = false;
+    for (let line of fileContents)
+    {
+        if (smntixSingleLine(line) === false)
+        {
+            resultOutput.innerText = 'Semantically Incorrect: Try Again!';
+            break;
+        }
+        resultOutput.innerText = 'Semantically Correct: Passed!';
     }
+
+    if(resultOutput.innerText === 'Semantically Correct: Passed!')
+    {
+        openFileButton.disabled = true;
+        lexemeButton.disabled = true;
+        syntaxButton.disabled = true;
+        smnticButton.disabled = true;
+        clearButton.disabled = false;
+    }
+}
+
+function smntixSingleLine(line)
+{
+    let status;
+    line = line.trim();
+
+    if (!line.endsWith(';'))
+    {
+        status = false;
+        return status;
+    }
+    line = line.substring(0, line.length - 1);
+    let lineParts = line.split("=");
+
+    if (lineParts.length != 2)
+    {
+        status = false;
+        return status;
+    }
+
+    let declaration = lineParts[0].trim();
+    let value = lineParts[1].trim();
+
+    let declarationParts = declaration.split(" ");
+
+    if (declarationParts.length != 2)
+    {
+        status = false;
+        return status;
+    }
+
+    let dataType = declarationParts[0];
+
+    if (dataType === "int")
+    {
+        try 
+        {
+            parseInt(value);
+            status = true;
+        } 
+        catch (e) 
+        {
+            if (e instanceof TypeError || e instanceof RangeError) 
+            {
+                status = false;
+            }
+        }
+    }
+    else if (dataType === "double")
+    {
+        try
+        {
+            parseFloat(value);
+            status = true;
+        }
+        catch (e)
+        {
+            if (e instanceof TypeError || e instanceof RangeError) 
+            {
+                status = false;
+            }
+        }
+    }
+    else if (dataType === "String") 
+    {
+        if (value.startsWith("\"") && value.endsWith("\"")) 
+        {
+            status = true;
+        } 
+        else 
+        {
+            status = false;
+        }
+    }
+    else if (dataType === "boolean")
+    {
+        if (value === "true" || value === "false")
+        {
+            status = true;
+        } 
+        else 
+        {
+            status = false;
+        }
+    }
+    else if (dataType === "char")
+    {
+        if (value.startsWith("\'") && value.endsWith("\'") && value.length == 3) 
+        {
+            status = true;
+        } 
+        else 
+        {
+            status = false;
+        }
+    }
+    else
+    {
+        status = false;
+    }
+    return status;
 }
