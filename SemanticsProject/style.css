@@ -24,8 +24,8 @@ html, body{
     flex-direction: column;
     height: 100dvh;
     background-image: url(images/content/Gear.svg);
-    background-size: cover;
-    
+    background-size: 200%;
+    background-position: 50% 50%;
     /*background-color: #d6d6d6;*/
 }
 
@@ -77,24 +77,14 @@ html, body{
 }
 
 
-.head-link{
-    display: flex;
-}
-
-.head-link span:hover {
+.nav .nav-link :hover {
     background-color: #d9d9d9;
     color:black;
-    border-color: #d9d9d9 ;
-    border-style: solid;
-    border-width: 10px;
     border-radius: 20px;
-    margin-top: 14px;
-    margin-bottom: 14px;
-    margin-right: 14px;
     cursor:pointer;
 }
 
-.container-header {
+.nav {
     background-color: rgba(0,0,0,0.8);
     background-image: url('images/nav/Gears_simple_HD_animated_background_11.gif');
     background-size:cover;
@@ -103,12 +93,16 @@ html, body{
     justify-content: space-between;
     margin-bottom: 3em;
 }
+.nav-item span{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+    padding: 0.5em;
+}
 
-.container-header span {
+.nav span {
     font-size: 2em;
     color: white;
-    margin: 1em;
-    margin-left: 1em;
 }
 
 .container {
@@ -271,11 +265,17 @@ html, body{
     display: flex;
     align-items: center;
     margin: 20px;
+    margin-bottom: 0;
     padding: 1em;
 }
 
 .footer-item span {
     padding-left: 0.3em;
+}
+
+.copyright {
+    justify-content: center;
+    padding-bottom: 20px;
 }
 
 
