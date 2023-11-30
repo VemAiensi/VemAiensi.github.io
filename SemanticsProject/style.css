@@ -76,6 +76,15 @@ html, body{
     margin-right: 150px;
 }
 
+.site-title {
+    display: flex;
+    align-items: center;
+    margin-left:2em;
+}
+
+.nav-link {
+    margin-right: 1em;
+}
 
 .nav .nav-link :hover {
     background-color: #d9d9d9;
@@ -93,10 +102,13 @@ html, body{
     justify-content: space-between;
     margin-bottom: 3em;
 }
+
+
 .nav-item span{
-    display: flex;
+    display: inline-block;
     align-items: center;
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 0.5em;
 }
 
