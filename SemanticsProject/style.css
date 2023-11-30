@@ -23,7 +23,10 @@ html, body{
     display:flex;
     flex-direction: column;
     height: 100dvh;
-    background-color: #ffffff;
+    background-image: url(images/content/Gear.svg);
+    background-size: cover;
+    
+    /*background-color: #d6d6d6;*/
 }
 
 .section {
@@ -108,12 +111,6 @@ html, body{
     margin-left: 1em;
 }
 
-
-
-
-
-
-
 .container {
     display:flex;
     justify-content:center;
@@ -122,6 +119,10 @@ html, body{
     max-width: 1200px;
 }
 
+
+
+/* Buttons styles  1st column */
+
 .buttons {
     display:block;
     width: 300px;
@@ -129,20 +130,11 @@ html, body{
 
 .fn-buttons {
     display: flex;
-    background-color: #d9d9d9;
+    background-color: #BCFEFE;
     border-radius:18px 8px 8px 18px;
     justify-content: flex-end;
     align-items: center;
 }
-
-.modeBtn {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    padding: 5px;
-    letter-spacing: 5px;
-    font-size: 1em;
-}
-
 
 .btn{
     display: block;
@@ -158,6 +150,7 @@ html, body{
     font-size: 100%;
     letter-spacing: 3px;
     border-style: none;
+    transition: 0.3s ease;
 }
 
 .btn:disabled {
@@ -165,6 +158,19 @@ html, body{
     color:#7a878a;
     cursor: not-allowed;
     background-color: #465b5f;
+}
+
+.modeBtn {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 5px;
+    letter-spacing: 5px;
+    font-size: 1em;
+    
+}
+.modeBtn span{
+    color:#0C5776;
+    font-weight: bold;
 }
 
 .btn-analyzers{
@@ -183,6 +189,28 @@ html, body{
 .btn-3 {
     border-radius:0px 0px 8px 0px;
 }
+
+.clr-button{
+    
+}
+.btn-clear {
+    transition:none;
+    fill: #ffffff;
+    background-color: #df5858;
+    width: 40px;
+    height: 40px;
+    margin-left: -50px;
+    margin-top: 130px;
+    border-radius: 10px;
+}
+
+.btn-clear:disabled{
+    background-color: #ca9898;
+    fill: #ffecec;
+}
+
+
+/* Text processing  2nd column */
 
 .text-out{
     display: flex;
@@ -222,23 +250,7 @@ html, body{
     resize: none;
     border-radius:8px 18px 18px 8px;
 }
-.clr-button{
-    
-}
-.btn-clear {
-    fill: #ffffff;
-    background-color: #df5858;
-    width: 40px;
-    height: 40px;
-    margin-left: -50px;
-    margin-top: 130px;
-    border-radius: 10px;
-}
 
-.btn-clear:disabled{
-    background-color: #ca9898;
-    fill: #ffecec;
-}
 
 
 
