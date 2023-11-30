@@ -24,18 +24,29 @@ html, body{
     flex-direction: column;
     height: 100dvh;
     background-image: url(images/content/Gear.svg);
-    background-size: 200%;
-    background-position: 50% 50%;
     /*background-color: #d6d6d6;*/
+}
+
+.site-title {
+    display: flex;
+    align-items: center;
+    margin-left:2em;
+}
+
+.nav-link {
+    margin-right: 1em;
+}
+
+.nav .nav-link :hover {
+    background-color: #d9d9d9;
+    color:black;
+    border-radius: 20px;
+    cursor:pointer;
 }
 
 .section {
     margin-left: 120px;
     margin-right: 120px;
-}
-
-.sct-1{
-    text-align: center;
 }
 
 .sct-1-head{
@@ -71,27 +82,45 @@ html, body{
 }
 
 .sct-2 {
+    display:flex;
+    flex-direction: column;
     flex-grow: 1;
-    margin-left: 150px;
-    margin-right: 150px;
+    justify-content: center;
+    width: auto;
+    padding: 50px;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
-.site-title {
+.sct-2 h2{
+   text-align: center; 
+}
+
+.sct-2-container {
+    max-width: 1200px;
+    margin: auto;
+}
+.sct-2 .desc {
     display: flex;
-    align-items: center;
-    margin-left:2em;
+    align-items: flex-start;
+    padding: 0.3em;
+    margin-bottom:0.3em;
 }
 
-.nav-link {
-    margin-right: 1em;
+.sct-2 span{
+    padding: 0.3em;
 }
 
-.nav .nav-link :hover {
-    background-color: #d9d9d9;
-    color:black;
-    border-radius: 20px;
-    cursor:pointer;
+
+.descButton{
+    text-align: center;
+    min-width:100px;
+    background-color: #00a6c7;
+    border-radius: 10px;
+    color:#ffffff;
 }
+
+
 
 .nav {
     background-color: rgba(0,0,0,0.8);
@@ -136,7 +165,7 @@ html, body{
 
 .fn-buttons {
     display: flex;
-    background-color: #BCFEFE;
+    background-color: #005252;
     border-radius:18px 8px 8px 18px;
     justify-content: flex-end;
     align-items: center;
@@ -144,7 +173,7 @@ html, body{
 
 .btn{
     display: block;
-    background-color: #2d99ae;
+    background-color: #00a6c7;
     color:#ffffff;
     width: 100%;
     height: 60px;
@@ -175,7 +204,7 @@ html, body{
     
 }
 .modeBtn span{
-    color:#0C5776;
+    color:#ffffff;
     font-weight: bold;
 }
 
