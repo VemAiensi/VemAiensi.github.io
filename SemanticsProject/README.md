@@ -1,7 +1,13 @@
 # Lexical | Syntax | Semantic Analyzer
  *a program emulating the compiler of Java*
+ 
+<br>
 
-**This is a project for the Theory of Programming Languages Course**
+**This is the Final project for the Theory of Programming Languages Course [CSL314-18]**
+
+by the TurtleDuck Team: ___Marianne M. Edic___ & ___Vem Aiensi A. Marasigan___
+
+3BSCS-1
 
 # State/Activity Diagram
 
