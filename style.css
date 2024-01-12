@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+@font-face {
+    font-family: "JetBrains";
+    src: url('Fonts/woff2/JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Raleway;
+    color: #777;
+}
+
+html, body, nav {
+    margin: 0;
+    padding: 0;
+}
+.nav span {
+    font-size: 20px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.main-nav {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: lighter;
+}
+
+.main-nav li {
+    padding: 3%;
+}
+
+.main-nav span:hover {
+    background-color: rgba(255,255,255, .3);
+}
+
+.main-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.8);
+    background-image: url("images/hehe.jpg");
+    background-blend-mode: multiply;
+    background-size: cover;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.WebTitle {
+    margin: 0;
+    font-size: 30px;
+    font-family: "JetBrains";
+    font-weight: normal;
+    color: white;
+}
+
+.WebTitle-head {
+    font-size: 5em;
+}
+
+.content-section {
+    margin: 1em;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+.section-header {
+    text-align: Center;
+    font-family: 'JetBrains';
+    color: Black;
+}
+
+.about-image {
+    float: Right;
+    height: 200px;
+    width: 200px;
+    margin: 15px;
+    border-radius: 10%;
+}
+
+.footer {
+    background-color: #4b9651;
+    color: white;
+    padding: .25em 0;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+}
+
+.footer-container ul {
+    flex-grow: 1;
+    text-align: end;
+}
