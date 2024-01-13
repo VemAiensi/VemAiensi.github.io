@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Audiowide');
 
 @font-face {
     font-family: "JetBrains";
     src: url('Fonts/woff2/JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "GTimes";
+    src: url('Fonts/good-times-rg.otf') format('otf');
     font-weight: normal;
     font-style: normal;
 }
@@ -17,12 +25,14 @@ html, body, nav {
     margin: 0;
     padding: 0;
 }
+
 .nav span {
     font-size: 20px;
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
 .nav a {
+    font-family: Audiowide;
     color: white;
     text-decoration: none;
 }
@@ -44,12 +54,16 @@ html, body, nav {
 }
 
 .main-header {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
     height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: rgba(0,0,0,0.8);
-    background-image: url("images/hehe.jpg");
+    /*background-image: url("images/hehe.jpg");*/
     background-blend-mode: multiply;
     background-size: cover;
     padding-right: 30px;
