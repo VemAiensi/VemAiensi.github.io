@@ -5,24 +5,24 @@
     font-family: "JetBrains";
     src: url('Fonts/woff2/JetBrainsMono-Regular.woff2') format('woff2');
     font-weight: normal;
-    font-style: normal;
+    font-style: normal; 
 }
 
 @font-face {
     font-family: "GTimes";
-    src: url('Fonts/good-times-rg.otf') format('otf');
+    src: url('Fonts/good-times-rg.otf');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: NSquare;
-    src: url('Fonts/North-Square.ttf')
+    src: url('Fonts/North-Square.ttf');
 }
 
 @font-face {
     font-family: AT;
-    src: url('Fonts/auto-techno.ttf')
+    src: url('Fonts/auto-techno.ttf');
 }
 
 * {
@@ -31,7 +31,7 @@
     color: #777;
 }
 
-html, body, nav {
+html, body{
     margin: 0;
     padding: 0;
 }
@@ -96,8 +96,26 @@ nav {
 
 
 
+.pageBanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    padding: 100px 50px 50px 50px;
+    background-color: #000000;
+}
 
+.pageTitle {
+    font-family: GTimes;
+    color: white;
+    font-size: 50px;
+}
 
+.shortDesc {
+    color: white;
+    font-family: NSquare;
+    text-align: center;
+}
 
 .content-section {
     margin: 1em;
@@ -123,18 +141,10 @@ nav {
     border-radius: 10%;
 }
 
-.footer {
-    background-color: #4b9651;
-    color: white;
-    padding: .25em 0;
-}
-
-.footer-container {
+footer {
+    background-color: #003a22;
     display: flex;
-    align-items: center;
-}
-
-.footer-container ul {
-    flex-grow: 1;
-    text-align: end;
+    padding: 5px 30px;
+    text-align: center;
+    justify-content: center;
 }
