@@ -36,6 +36,10 @@ html, body{
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 nav {
     overflow: hidden;
     position: fixed;
@@ -74,24 +78,21 @@ nav {
 
 .viewingPage {
     color: white;
+    font-weight: bold;
+    cursor: default;
 }
 
 .navLink {
+    color:white;
+    transition: color 0.2s;
+}
+
+.navi:hover span{
     color: rgb(190, 190, 190);
-    border-style: solid;
-    border-width: 0px 0px 3px 0px;
-    border-radius: 3px;
-    border-color: rgba(255,255,255,0);
-    transition: border-color 0.2s;
 }
 
-.navi a {
-    text-decoration: none;
-}
-
-.navi span:hover {
-    border-color: rgb(190, 190, 190);
-    border-width: 0px 0px 5px 0px;
+.navi .navLink:hover {
+    color:white;
 }
 
 
@@ -142,9 +143,40 @@ nav {
 }
 
 footer {
-    background-color: #003a22;
-    display: flex;
-    padding: 5px 30px;
+    display:flex;
+    flex-direction: column;
+    background-color: #00301c;
+    padding: 20px;
     text-align: center;
-    justify-content: center;
+    align-items: center;
+}
+
+.links{
+    display: block;
+}
+
+.links:hover #color{
+    fill:#8b8b8b;
+}
+
+.icon{
+    width: 40px;
+    margin: 0 5px 5px;
+}
+
+.icon #color{
+    transition: 0.3s ease-in-out;
+}
+
+.icon:hover #color{
+    fill: white;
+}
+
+.icon #color {
+    fill:white;
+}
+
+.footerText span {
+    font-size: 15px;
+    color: white;
 }
