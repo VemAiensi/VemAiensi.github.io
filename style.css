@@ -106,7 +106,9 @@ nav {
     align-items: center;
     height: 250px;
     padding: 100px 50px 50px 50px;
-    background-color: #000000;
+    background-image: url(Assets/peakpx.jpg);
+    background-color: rgba(0,0,0,0.6);
+    background-blend-mode: multiply;
 }
 
 .pageTitle {

@@ -60,6 +60,7 @@ html, body{
 
 .nav-link {
     margin-right: 1em;
+    transition: 1s ease-in-out;
 }
 
 .nav .nav-link :hover {
