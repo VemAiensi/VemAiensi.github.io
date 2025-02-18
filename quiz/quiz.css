@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "JetBrains";
+  src: url("../Fonts/woff2/JetBrainsMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background-color: rgb(41, 41, 41);
+  color: white;
+  font-family: "JetBrains";
+  gap: 30px;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+}
+
+.answer {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Vertically center */
+  justify-content: center; /* Horizontally center */
+  height: 100dvh; /* Or any height you need */
+}
+
+.confetti {
+  background-image: url("confetti.gif");
+  background-repeat: no-repeat;
+  background-size: cover; /* Use background-size: cover; not object-fit */
+  position: fixed; /* Use fixed positioning */
+  top: 0;
+  left: 0;
+  width: 100%; /* Use viewport width units */
+  height: 100%; /* Use viewport height units */
+}
+.invisible {
+  display: none;
+}
+
+.pump {
+  animation: exaggerate 1s linear infinite;
+}
+
+@keyframes exaggerate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}

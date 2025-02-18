@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="quiz.css" />
+    <title>Nyii</title>
+
+    <style>
+      body {
+        overflow: hidden; /* Prevent scrollbars */
+      }
+
+      .gif-container {
+        overflow: hidden;
+        position: absolute; /* Needed for positioning */
+        animation: fall 5s linear infinite; /* Adjust duration and timing */
+        opacity: 0;
+      }
+
+      .gif-container img {
+        width: 100px; /* Adjust GIF size */
+        height: auto;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-100dvh); /* Start above the viewport */
+          opacity: 0; /*Start transparent*/
+        }
+        70% {
+          opacity: 1; /*Become visible mid-fall*/
+        }
+        100% {
+          transform: translateY(100vh); /* Fall below the viewport */
+          opacity: 0; /*Fade out at the end*/
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="reveal" class="answer pump">Tap to Reveal</div>
+
+    <div id="answer" class="answer invisible">
+      <img src="Crying-Cat.gif" alt="" />
+      <h1>Nyiiii!!!</h1>
+    </div>
+
+    <audio id="myAudio">
+      <source src="nyiii.ogg" type="audio/ogg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <script>
+      document.getElementById("reveal").addEventListener("click", () => {
+        document.getElementById("reveal").classList.add("invisible");
+        document.getElementById("answer").classList.remove("invisible");
+
+        const audio = document.getElementById("myAudio");
+
+        // Attempt autoplay
+        const playPromise = audio.play();
+        const numGifs = 20; // Number of GIF instances
+        const body = document.body;
+
+        for (let i = 0; i < numGifs; i++) {
+          const gifContainer = document.createElement("div");
+          gifContainer.classList.add("gif-container");
+
+          const img = document.createElement("img");
+          img.src = "Crying-Cat.gif";
+          img.alt = "";
+          gifContainer.appendChild(img);
+
+          // Random horizontal position
+          const randomX = Math.random() * 100; // 0-100%
+          gifContainer.style.left = `${randomX}vw`;
+
+          // Random start delay for each GIF
+          const randomDelay = Math.random() * 5; // 0-5 seconds
+          gifContainer.style.animationDelay = `${randomDelay}s`;
+
+          body.appendChild(gifContainer);
+        }
+      });
+    </script>
+  </body>
+</html>
